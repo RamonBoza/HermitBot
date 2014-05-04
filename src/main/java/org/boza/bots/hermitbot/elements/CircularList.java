@@ -7,7 +7,7 @@ public class CircularList<T> extends ArrayList<T> {
 	private int index = -1;
 
 	public T next() {
-		index = index++ % size();
+		index = (++index) % size();
 		return get(index);
 	}
 

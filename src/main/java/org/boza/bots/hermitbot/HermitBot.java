@@ -17,10 +17,14 @@ public class HermitBot {
 		screens = new CircularList<Screen>();
 	}
 
-	public void setup() {
+	public void defaultSetup() {
 		screens.add(new CharacterScreen());
-		screens.add(new InGameScreen());
 		screens.add(new LoadingScreen());
+		screens.add(new InGameScreen());
+	}
+
+	public void addScreen(final Screen screen) {
+		screens.add(screen);
 	}
 
 	public void locateItself() {
@@ -29,5 +33,13 @@ public class HermitBot {
 			Screen screen = screens.next();
 			found = screen.isDisplayed();
 		} while (!found);
+	}
+
+	public void runBot() {
+		while (true) {
+			Screen screen = screens.get();
+			screen.executeAction();
+			screens.next();
+		}
 	}
 }
