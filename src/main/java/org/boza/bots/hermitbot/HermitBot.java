@@ -3,7 +3,6 @@ package org.boza.bots.hermitbot;
 import org.boza.bots.hermitbot.elements.CircularList;
 import org.boza.bots.hermitbot.screens.CharacterScreen;
 import org.boza.bots.hermitbot.screens.InGameScreen;
-import org.boza.bots.hermitbot.screens.LoadingScreen;
 import org.boza.bots.hermitbot.screens.Screen;
 
 /**
@@ -19,7 +18,7 @@ public class HermitBot {
 
 	public void defaultSetup() {
 		screens.add(new CharacterScreen());
-		screens.add(new LoadingScreen());
+		// screens.add(new LoadingScreen());
 		screens.add(new InGameScreen());
 	}
 
