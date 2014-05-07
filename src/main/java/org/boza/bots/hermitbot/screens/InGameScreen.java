@@ -12,21 +12,66 @@ public class InGameScreen extends AbstractScreen implements Screen {
 		LOGGER.debug("Executing the action");
 		goToStash();
 		goToPortal();
-		searchForQuest();
+		if (searchForQuest()) {
+			returnQuest();
+		}
+		leaveGame();
 	}
 
-	private void searchForQuest() {
+	private void leaveGame() {
+
+	}
+
+	private void returnQuest() {
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_ELEVEN);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_TEN);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_NINE);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_EIGHT);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_SEVEN);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_SIX);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_FIVE);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_FOUR);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_THREE);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_TWO);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_ONE);
+	}
+
+	private boolean searchForQuest() {
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_ONE);
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_TWO);
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_THREE);
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_FOUR);
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_FIVE);
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_SIX);
+		// searchCorpse();
 		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_SEVEN);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_EIGHT);
+		// searchCorpse();
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_NINE);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_TEN);
+		goToGround(DiabloResources.IN_GAME_SCREEN_GROUND_ELEVEN);
+		boolean elementPresent = driver
+				.isElementPresent(DiabloResources.IN_GAME_SCREEN_HERMIT_QUEST);
+		goToGround(DiabloResources.IN_GAME_SCREEN_HERMIT_QUEST);
+		return elementPresent;
+	}
+
+	private void searchCorpse() {
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_1);
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_2);
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_3);
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_4);
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_5);
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_6);
+		goToGround(DiabloResources.IN_GAME_SCREEN_CORPSE_7);
 	}
 
 	private void goToGround(final String resource) {
-		driver.click(resource);
+		try {
+			driver.click(resource);
+		} catch (NullPointerException e) {
+
+		}
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {

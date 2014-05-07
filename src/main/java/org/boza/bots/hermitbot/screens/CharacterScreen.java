@@ -13,7 +13,7 @@ public class CharacterScreen extends AbstractScreen implements Screen {
 		LOGGER.debug("Executing the action");
 		driver.click(DiabloResources.CHARACTER_SCREEN);
 		try {
-			Thread.sleep(15000);
+			Thread.sleep(17000);
 		} catch (InterruptedException e) {
 			LOGGER.error("Found a problem when sleeping", e);
 		}
